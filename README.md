@@ -4,6 +4,8 @@
 
 <a id="english"></a>
 
+## English
+
 A [DeepSeek Harness](https://github.com/deepseek-ai/dsh) Web plugin that displays your DeepSeek API balance in the sidebar footer.
 
 ![show balance](images/image.png)
@@ -29,10 +31,8 @@ A [DeepSeek Harness](https://github.com/deepseek-ai/dsh) Web plugin that display
 
 #### Install directly from GitHub
 
-Replace `<owner>/<repo>` with the GitHub repository that contains this plugin:
-
 ```bash
-dsh plugin --profile web add github:<owner>/<repo>
+dsh plugin --profile web add github:eka3os/dsh-balance
 ```
 
 Restart the Web profile after installation:
@@ -70,7 +70,7 @@ Do not commit API keys or credential files to Git.
 ### API endpoint
 
 | Method | Path | Description |
-|---|---|---|
+| --- | --- | --- |
 | `GET`, `HEAD` | `/api/dsh-balance` | Returns the current DeepSeek API balance. |
 
 Successful responses contain the following shape:
@@ -99,6 +99,8 @@ MIT
 
 <a id="中文"></a>
 
+## 中文
+
 一个用于 [DeepSeek Harness](https://github.com/deepseek-ai/dsh) Web 界面的插件，会将 DeepSeek API 余额显示在侧边栏底部。
 
 ![show balance](images/image.png)
@@ -124,10 +126,8 @@ MIT
 
 #### 直接从 GitHub 安装
 
-将 `<owner>/<repo>` 替换为存放本插件的 GitHub 仓库：
-
 ```bash
-dsh plugin --profile web add github:<owner>/<repo>
+dsh plugin --profile web add github:eka3os/dsh-balance
 ```
 
 安装完成后重新启动 Web profile：
@@ -165,7 +165,7 @@ DEEPSEEK_API_KEY: sk-your-key
 ### API 接口
 
 | 方法 | 路径 | 说明 |
-|---|---|---|
+| --- | --- | --- |
 | `GET`、`HEAD` | `/api/dsh-balance` | 返回当前 DeepSeek API 余额。 |
 
 成功响应示例：
