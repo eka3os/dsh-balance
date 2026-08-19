@@ -1,0 +1,3 @@
+- insert:
+    - id: dsh-balance
+      name: '@ek3os/dsh-balance'
