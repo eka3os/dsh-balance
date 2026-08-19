@@ -6,6 +6,8 @@
 
 A [DeepSeek Harness](https://github.com/deepseek-ai/dsh) Web plugin that displays your DeepSeek API balance in the sidebar footer.
 
+![show balance](images/image.png)
+
 > The plugin is currently `0.1.0` and requires DeepSeek Harness `>=0.1.0-rc.7`.
 
 ### Features
@@ -98,6 +100,8 @@ MIT
 <a id="中文"></a>
 
 一个用于 [DeepSeek Harness](https://github.com/deepseek-ai/dsh) Web 界面的插件，会将 DeepSeek API 余额显示在侧边栏底部。
+
+![show balance](images/image.png)
 
 > 当前版本为 `0.1.0`，要求 DeepSeek Harness `>=0.1.0-rc.7`。
 
