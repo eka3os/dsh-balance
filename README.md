@@ -10,7 +10,7 @@ A [DeepSeek Harness](https://github.com/deepseek-ai/dsh) Web plugin that display
 
 ![show balance](images/image.png)
 
-> The plugin is currently `0.1.0` and requires DeepSeek Harness `>=0.1.0-rc.7`.
+> The plugin is currently `0.2.0` and requires DeepSeek Harness `>=0.1.2-rc.1 <0.3.0-0`.
 
 ### Features
 
@@ -23,7 +23,7 @@ A [DeepSeek Harness](https://github.com/deepseek-ai/dsh) Web plugin that display
 
 ### Requirements
 
-- DeepSeek Harness `>=0.1.0-rc.7`
+- DeepSeek Harness `>=0.1.2-rc.1 <0.3.0-0` (verified against `0.2.0-rc.2`)
 - The `web` profile
 - A configured `DEEPSEEK_API_KEY`
 
@@ -67,6 +67,16 @@ Do not commit API keys or credential files to Git.
 4. The client plugin renders the returned CNY/USD balances in the sidebar footer.
 5. The client repeats the request every 60 seconds while the wide sidebar is visible.
 
+### Compatibility notes
+
+Version `0.2.0` adapts the plugin to the DSH 0.2 client layout:
+
+- The `slots` service moved from the retired `@deepseek-ai/dsh-client-runtime` package (last release `0.1.1-rc.2`) to `@deepseek-ai/dsh-client-ui-renderer`, so the peer declarations and `dsh.client.inject` list now name the renderer. DSH 0.2 refuses to load any bundle whose `@deepseek-ai/dsh-*` peers cannot be satisfied, which is what produced the `skipping profile bundle … is incompatible with dsh 0.2.0-rc.2` error.
+- `dsh.client.inject` is the arrival-order contract: every listed package is loaded before this plugin's bundle, so `slots` is always available when `apply()` runs.
+- The sidebar footer markup, stylesheet hooks, and layout class names are unchanged between 0.1.7-rc.2 and 0.2.0-rc.2, so the rendered result is identical.
+
+Run `npm run check` to verify both halves against the installed DSH contract (host route behavior plus client slot registration).
+
 ### API endpoint
 
 | Method | Path | Description |
@@ -105,7 +115,7 @@ MIT
 
 ![show balance](images/image.png)
 
-> 当前版本为 `0.1.0`，要求 DeepSeek Harness `>=0.1.0-rc.7`。
+> 当前版本为 `0.2.0`，要求 DeepSeek Harness `>=0.1.2-rc.1 <0.3.0-0`。
 
 ### 功能
 
@@ -118,7 +128,7 @@ MIT
 
 ### 环境要求
 
-- DeepSeek Harness `>=0.1.0-rc.7`
+- DeepSeek Harness `>=0.1.2-rc.1 <0.3.0-0`（已在 `0.2.0-rc.2` 上验证）
 - `web` profile
 - 已配置的 `DEEPSEEK_API_KEY`
 
@@ -181,6 +191,16 @@ DEEPSEEK_API_KEY: sk-your-key
 ```
 
 凭据缺失时返回 `503`；DeepSeek API 无法访问或返回失败状态时返回 `502`；不支持的方法返回 `405`。
+
+### 兼容性说明
+
+`0.2.0` 版本适配了 DSH 0.2 的客户端结构：
+
+- `slots` 服务已从被移除的 `@deepseek-ai/dsh-client-runtime` 包（最后一个版本为 `0.1.1-rc.2`）迁移到 `@deepseek-ai/dsh-client-ui-renderer`，因此 peer 依赖声明与 `dsh.client.inject` 列表现在指向 renderer。DSH 0.2 会拒绝加载任何 `@deepseek-ai/dsh-*` peer 无法满足的 bundle，这正是 `skipping profile bundle … is incompatible with dsh 0.2.0-rc.2` 报错的原因。
+- `dsh.client.inject` 是加载顺序契约：其中列出的每个包都会先于本插件 bundle 加载，因此 `apply()` 执行时 `slots` 必定可用。
+- 侧边栏底部结构、样式钩子与布局类名在 0.1.7-rc.2 与 0.2.0-rc.2 之间没有变化，因此渲染结果保持一致。
+
+运行 `npm run check` 可针对当前安装的 DSH 契约校验两部分实现（Host 路由行为与客户端 slot 注册）。
 
 ### GitHub 分发
 
